@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>$DEAUX - Case Reopened</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#08110f;
+  --bg-raised:#0f1c19;
+  --line:#1e332e;
+  --ink:#e9f5f1;
+  --ink-dim:#7fa89c;
+  --acid:#97fce4;
+  --acid-dim:#5be8c9;
+  --red:#c6503f;
+}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:'Roboto', sans-serif;
+  font-size:14px;
+}
+.wrap{ max-width:1100px; margin:0 auto; padding:0 28px; }
+a{color:inherit;}
+.hairline{ border-top:1px solid var(--line); }
+
+/* ---------- NAV ---------- */
+nav{
+  position:sticky; top:0; z-index:50;
+  background:rgba(10,10,10,0.92); backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+}
+nav .wrap{ display:flex; align-items:center; justify-content:space-between; padding:16px 28px; }
+.logo{ display:flex; align-items:center; gap:8px; font-family:'Poppins',sans-serif; font-weight:800; font-size:15px; letter-spacing:.02em; }
+.logo .dot{ width:8px;height:8px;background:var(--acid); }
+.nav-links{ display:flex; gap:28px; font-size:12px; letter-spacing:.04em; color:var(--ink-dim); }
+.nav-links a:hover{ color:var(--acid); }
+.btn{
+  background:var(--acid); color:#0a0a0a; font-family:'Roboto',sans-serif; font-weight:700;
+  font-size:12px; letter-spacing:.04em; padding:10px 18px; border:none; cursor:pointer;
+  text-transform:uppercase; text-decoration:none; display:inline-block;
+}
+.btn:hover{ background:var(--acid-dim); }
+.btn-ghost{
+  background:transparent; border:1px solid var(--line); color:var(--ink);
+  padding:10px 18px; font-size:12px; letter-spacing:.04em; text-transform:uppercase;
+}
+
+/* ---------- HERO ---------- */
+.hero{ padding:90px 0 60px; display:grid; grid-template-columns:1.15fr 1fr; gap:60px; align-items:center; }
+.file-tag{
+  display:inline-flex; align-items:center; gap:8px;
+  border:1px solid var(--line); color:var(--acid); font-size:11px; letter-spacing:.1em;
+  padding:6px 12px; text-transform:uppercase; margin-bottom:22px;
+}
+.file-tag::before{ content:'●'; font-size:8px; }
+h1.big{
+  font-family:'Poppins',sans-serif; font-weight:800; font-size:52px; line-height:1.02; letter-spacing:-.01em;
+  margin-bottom:20px;
+}
+h1.big .acid{ color:var(--acid); }
+.hero p{ color:var(--ink-dim); line-height:1.7; max-width:460px; margin-bottom:28px; font-size:13.5px; }
+.hero-ctas{ display:flex; gap:12px; }
+
+.ticker-card{
+  background:var(--bg-raised); border:1px solid var(--line); padding:22px;
+}
+.ticker-top{ display:flex; justify-content:space-between; font-size:11px; color:var(--ink-dim); letter-spacing:.08em; text-transform:uppercase; margin-bottom:14px;}
+.ticker-price{ font-family:'Poppins',sans-serif; font-weight:800; font-size:30px; margin-bottom:4px; }
+.ticker-sub{ color:var(--acid); font-size:12px; margin-bottom:16px; }
+.sparkline{ width:100%; height:70px; margin-bottom:16px; }
+.ca-box{
+  border:1px dashed var(--line); font-size:10px; color:var(--ink-dim);
+  padding:8px 10px; word-break:break-all; margin-top:12px;
+}
+
+/* ---------- EVIDENCE / LORE ---------- */
+.section{ padding:70px 0; }
+.eyebrow{
+  color:var(--acid); font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+  margin-bottom:14px; display:flex; align-items:center; gap:8px;
+}
+.eyebrow::before{ content:''; width:16px; height:1px; background:var(--acid); }
+h2.section-title{
+  font-family:'Poppins',sans-serif; font-weight:800; font-size:34px; line-height:1.1; margin-bottom:28px; max-width:600px;
+}
+
+.evidence-copy{ max-width:720px; margin-bottom:36px; }
+.evidence-copy p{ color:var(--ink-dim); line-height:1.8; margin-bottom:16px; font-size:14px; }
+.evidence-copy .highlight{ color:var(--ink); background:rgba(151,252,228,0.12); padding:0 3px; }
+
+.tweet-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; }
+.tweet-cell{
+  background:var(--bg-raised); border:1px solid var(--line); padding:10px;
+  max-height:520px; overflow-y:auto; overflow-x:hidden;
+}
+.tweet-cell::-webkit-scrollbar{ width:6px; }
+.tweet-cell::-webkit-scrollbar-thumb{ background:var(--line); }
+.tweet-cell .twitter-tweet{ margin:0 !important; }
+.tweet-card{
+  background:var(--bg-raised); border:1px solid var(--line); padding:20px;
+}
+.tweet-card .th{ display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+.tweet-card .av{
+  width:36px;height:36px;border-radius:50%; background:linear-gradient(135deg,#f0b90b,#7a5c00);
+  display:flex;align-items:center;justify-content:center; font-family:'Poppins',sans-serif; color:#0a0a0a; font-size:13px;
+}
+.tweet-card .name{ font-size:13px; font-weight:700; }
+.tweet-card .handle{ font-size:11px; color:var(--ink-dim); }
+.tweet-card .body{ font-size:13px; line-height:1.7; color:var(--ink); margin-bottom:12px; }
+.tweet-card .foot{ font-size:10px; color:var(--ink-dim); border-top:1px solid var(--line); padding-top:10px; letter-spacing:.04em; }
+.stamp-mini{
+  display:inline-block; border:1.5px solid var(--red); color:var(--red);
+  font-family:'Poppins',sans-serif; font-size:10px; padding:3px 8px; letter-spacing:.05em;
+  transform:rotate(-3deg); margin-top:12px;
+}
+
+/* ---------- MISSION / PRINCIPLES ---------- */
+.mission{
+  background:var(--bg-raised); border:1px solid var(--line); padding:44px;
+  display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:center;
+}
+.mission h3{ font-family:'Poppins',sans-serif; font-weight:800; font-size:28px; line-height:1.2; margin-bottom:14px; }
+.mission h3 .acid{ color:var(--acid); }
+.mission p{ color:var(--ink-dim); line-height:1.7; font-size:13px; }
+.checklist{ display:flex; flex-direction:column; gap:10px; }
+.check-item{ display:flex; align-items:center; gap:10px; font-size:12.5px; }
+.check-item .box{ width:14px;height:14px; border:1px solid var(--acid); color:var(--acid); font-size:10px; display:flex;align-items:center;justify-content:center; flex-shrink:0;}
+
+/* ---------- TOKENOMICS ---------- */
+.stat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+.stat{ background:var(--bg); padding:26px 22px; }
+.stat .num{ font-family:'Poppins',sans-serif; font-weight:800; font-size:28px; color:var(--acid); margin-bottom:6px; }
+.stat .lbl{ font-size:11px; color:var(--ink-dim); text-transform:uppercase; letter-spacing:.06em; margin-bottom:4px; }
+.stat .desc{ font-size:11px; color:var(--ink-dim); opacity:.7; }
+
+/* ---------- ROADMAP ---------- */
+.phase-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.phase{ border:1px solid var(--line); padding:20px; background:var(--bg-raised); }
+.phase .ph-num{ font-size:10px; color:var(--acid); letter-spacing:.1em; margin-bottom:10px; }
+.phase h4{ font-family:'Poppins',sans-serif; font-weight:800; font-size:16px; margin-bottom:8px; }
+.phase p{ font-size:11.5px; color:var(--ink-dim); line-height:1.6; }
+
+/* ---------- QUOTE BREAK ---------- */
+.quote-break{ padding:70px 0; text-align:center; }
+.quote-break blockquote{
+  font-family:'Poppins',sans-serif; font-weight:800; font-size:26px; line-height:1.4; max-width:700px; margin:0 auto;
+}
+.quote-break .acid{ color:var(--acid); }
+.quote-break cite{ display:block; margin-top:18px; font-size:11px; color:var(--ink-dim); font-style:normal; letter-spacing:.05em; }
+
+/* ---------- HOW TO / FAQ ---------- */
+.two-col{ display:grid; grid-template-columns:1fr 1fr; gap:50px; }
+.step{ display:flex; gap:14px; padding:14px 0; border-bottom:1px solid var(--line); font-size:13px; }
+.step .n{ color:var(--acid); font-family:'Poppins',sans-serif; flex-shrink:0; width:22px; }
+.faq-item{ border-bottom:1px solid var(--line); padding:14px 0; }
+.faq-item summary{ cursor:pointer; font-size:13px; list-style:none; display:flex; justify-content:space-between; }
+.faq-item summary::-webkit-details-marker{ display:none; }
+.faq-item summary::after{ content:'+'; color:var(--acid); font-family:'Poppins',sans-serif; }
+.faq-item[open] summary::after{ content:'–'; }
+.faq-item p{ margin-top:10px; color:var(--ink-dim); font-size:12.5px; line-height:1.7; }
+
+/* ---------- FOOTER ---------- */
+footer{ padding:70px 0 40px; text-align:center; }
+footer h2{ font-family:'Poppins',sans-serif; font-weight:800; font-size:42px; margin-bottom:10px; }
+footer p{ color:var(--ink-dim); font-size:12.5px; max-width:500px; margin:0 auto 28px; line-height:1.7; }
+.foot-links{ display:flex; justify-content:center; gap:22px; margin-top:40px; font-size:11px; color:var(--ink-dim); letter-spacing:.05em; }
+.disclaimer{ margin-top:30px; font-size:10px; color:#5c584c; max-width:560px; margin-left:auto; margin-right:auto; line-height:1.6; }
+
+@media (max-width:800px){
+  .hero{ grid-template-columns:1fr; }
+  .mission, .two-col{ grid-template-columns:1fr; }
+  .tweet-grid{ grid-template-columns:1fr; }
+  .stat-grid{ grid-template-columns:1fr 1fr; }
+  .phase-grid{ grid-template-columns:1fr 1fr; }
+  h1.big{ font-size:36px; }
+  .nav-links{ display:none; }
+}
+</style>
+<script>
+const PAGE_CONFIG = {
+  contractAddress: 'not deployed yet',
+  twitterUrl: '',
+  telegramUrl: '',
+  dexscreenerUrl: '',
+  buyUrl: ''
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+  const caBox = document.getElementById('ca-box');
+  if (caBox) {
+    caBox.textContent = `CA: ${PAGE_CONFIG.contractAddress || 'not deployed yet'}. will post here, plus pinned on X at launch. don't trust any CA posted before that.`;
+  }
+
+  const linkMap = {
+    twitter: PAGE_CONFIG.twitterUrl,
+    telegram: PAGE_CONFIG.telegramUrl,
+    dexscreener: PAGE_CONFIG.dexscreenerUrl,
+    buy: PAGE_CONFIG.buyUrl
+  };
+
+  document.querySelectorAll('[data-config-link]').forEach(el => {
+    const key = el.dataset.configLink;
+    if (linkMap[key]) el.href = linkMap[key];
+  });
+});
+</script>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo"><span class="dot"></span> $DEAUX</div>
+    <div class="nav-links">
+      <a href="#lore">the file</a>
+      <a href="#tokenomics">tokenomics</a>
+      <a href="#roadmap">roadmap</a>
+      <a href="#faq">faq</a>
+    </div>
+    <a href="#" class="btn" data-config-link="buy">buy $deaux</a>
+  </div>
+</nav>
+
+<header class="wrap hero">
+  <div>
+    <div class="file-tag">case file 2018, reopened 2026</div>
+    <h1 class="big">before hyperliquid,<br>it was called <span class="acid">deaux.</span><br>and it failed.</h1>
+    <p>2018. Jeff Yan's first company. A prediction market for anything with an outcome. 100 users. Bear market. Dead in a year. Every mechanic that makes Hyperliquid work today was tested here first, and lost.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn" data-config-link="buy">buy $deaux</a>
+      <a href="#lore" class="btn-ghost">read the file</a>
+    </div>
+  </div>
+  <div class="ticker-card">
+    <div class="ticker-top"><span>$DEAUX · hyperliquid</span><span>pre-launch</span></div>
+    <div class="ticker-price">- - -</div>
+    <div class="ticker-sub">case reopens at launch</div>
+    <div class="ca-box" id="ca-box">CA: not deployed yet. will post here, plus pinned on X at launch. don't trust any CA posted before that.</div>
+  </div>
+</header>
+
+<section class="wrap section" id="lore">
+  <div class="eyebrow">exhibit a: the record</div>
+  <h2 class="section-title">the founder confirmed it himself. so did the other guy.</h2>
+
+  <div class="evidence-copy">
+    <p><span class="highlight">April 2018:</span> Jeff Yan leaves Hudson River Trading with his college roommate, Brian Wong. They build a decentralized prediction market: bet on weather, elections, sports, anything with a result. The mechanism (off-chain matching, on-chain settlement) is the same core idea that later powers Hyperliquid's order book.</p>
+    <p>They get into <span class="highlight">Binance Labs' first-ever incubator cohort</span> in San Francisco. They call it Deaux.</p>
+    <p>It never leaves the ground. Bitcoin is down 80% from its peak. Nobody wants to bet on tomorrow's weather. Deaux tops out around <span class="highlight">100 users</span>. Yan personally refunds most of the $450K raised. The project shuts down.</p>
+    <p>Four years later, same core idea, same founder, better timing: Hyperliquid launches. Today it clears more perp volume than most centralized exchanges. $DEAUX is the ticker that was never given the chance the first time.</p>
+  </div>
+
+  <div class="tweet-grid">
+    <div class="tweet-cell">
+      <blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">From startup to The House of all finance - The Hyperliquid Story<br><br>Let&#39;s start with the man behind it all - Jeff Yan.<br>At 17, he won silver at the Physics Olympiad. At 18, gold. Then he went to Harvard.<br><br>After a short stint at Google, in 2018 he launched Deaux a prediction market.&#8230; <a href="https://t.co/BtAk2D8DJU">pic.twitter.com/BtAk2D8DJU</a></p>&mdash; Grinder.hl (@Beliukh_) <a href="https://x.com/Beliukh_/status/2047985756237439482?ref_src=twsrc%5Etfw">April 25, 2026</a></blockquote>
+    </div>
+
+    <div class="tweet-cell">
+      <blockquote class="twitter-tweet" data-conversation="none"><a href="https://twitter.com/nahnah64/status/2042906753482789272"></a></blockquote>
+    </div>
+
+    <div class="tweet-cell">
+      <blockquote class="twitter-tweet" data-conversation="none"><a href="https://twitter.com/cz_binance/status/1976601829099119010"></a></blockquote>
+    </div>
+  </div>
+</section>
+
+<script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
+
+<section class="wrap section">
+  <div class="mission">
+    <div>
+      <h3>bets on <span class="acid">everything.</span><br>pays out on <span class="acid">nothing,</span> yet.</h3>
+      <p>$DEAUX has no product, no roadmap deliverable, no team token. It exists to mark the exact moment a founder's first "failure" quietly became the blueprint for a $10B exchange. That's the whole trade.</p>
+    </div>
+    <div class="checklist">
+      <div class="check-item"><span class="box">✓</span> zero utility, by design</div>
+      <div class="check-item"><span class="box">✓</span> 100% of supply in the open</div>
+      <div class="check-item"><span class="box">✓</span> lore backed by primary sources, not vibes</div>
+      <div class="check-item"><span class="box">✓</span> native to Hyperliquid / HyperEVM</div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section" id="tokenomics">
+  <div class="eyebrow">exhibit b: the numbers</div>
+  <h2 class="section-title">the file, quantified.</h2>
+  <div class="stat-grid">
+    <div class="stat"><div class="num">1B</div><div class="lbl">total supply</div><div class="desc">fixed at genesis. no mint function.</div></div>
+    <div class="stat"><div class="num">0 / 0</div><div class="lbl">buy / sell tax</div><div class="desc">the case gets reopened, not taxed.</div></div>
+    <div class="stat"><div class="num">100%</div><div class="lbl">liquidity locked</div><div class="desc">lp burned at launch.</div></div>
+    <div class="stat"><div class="num">2018</div><div class="lbl">year deaux launched</div><div class="desc">binance labs season 1, project 2 of 8.</div></div>
+    <div class="stat"><div class="num">~100</div><div class="lbl">users, at peak</div><div class="desc">the whole reason this ticker was free.</div></div>
+    <div class="stat"><div class="num">$450K</div><div class="lbl">raised, mostly returned</div><div class="desc">yan refunded backers when it closed.</div></div>
+  </div>
+</section>
+
+<section class="wrap section" id="roadmap">
+  <div class="eyebrow">exhibit c: the roadmeau</div>
+  <h2 class="section-title">four phases. this is a meme coin, these are jokes, mostly.</h2>
+  <div class="phase-grid">
+    <div class="phase"><div class="ph-num">phase 1</div><h4>reopen the file</h4><p>token deploys. case file goes public. eight ball cracks open.</p></div>
+    <div class="phase"><div class="ph-num">phase 2</div><h4>subpoena the timeline</h4><p>every "jeff yan origin story" thread on ct gets a $deaux reply. unavoidable.</p></div>
+    <div class="phase"><div class="ph-num">phase 3</div><h4>get a verdict</h4><p>polite letter to jeff. we're not asking for a partnership. just a like.</p></div>
+    <div class="phase"><div class="ph-num">phase 4</div><h4>case dismissed (to valhalla)</h4><p>deaux was never the failure. it was the beta test.</p></div>
+  </div>
+</section>
+
+<section class="quote-break wrap">
+  <blockquote>"that thing had <span class="acid">absolutely no chance</span> of succeeding."</blockquote>
+  <cite>jeff yan, on deaux, in a 2026 profile of the company it quietly became</cite>
+</section>
+
+<section class="wrap section">
+  <div class="two-col">
+    <div>
+      <div class="eyebrow">how to get in</div>
+      <h2 class="section-title" style="font-size:26px;">four easy steps.</h2>
+      <div class="step"><span class="n">01</span> add hyperevm to your wallet.</div>
+      <div class="step"><span class="n">02</span> bridge funds over to hyperliquid.</div>
+      <div class="step"><span class="n">03</span> open the dex, paste the contract, swap for $deaux.</div>
+      <div class="step"><span class="n">04</span> done. you're part of the file now.</div>
+    </div>
+    <div id="faq">
+      <div class="eyebrow">frequently subpoenaed</div>
+      <h2 class="section-title" style="font-size:26px;">questions.</h2>
+      <details class="faq-item"><summary>is this affiliated with hyperliquid or jeff yan?</summary><p>no. this is an independent community token referencing public, previously reported history. no partnership, endorsement, or shared ownership exists or is implied.</p></details>
+      <details class="faq-item"><summary>is the deaux story actually real?</summary><p>yes. reported across multiple independent outlets and confirmed directly by cz on x in october 2025, plus binance labs' own incubator writeup from 2019.</p></details>
+      <details class="faq-item"><summary>what's the utility?</summary><p>none. it's a lore token. the utility is knowing the story before everyone else does.</p></details>
+      <details class="faq-item"><summary>will it go up?</summary><p>nobody knows. it's a memecoin, treat it as a small, high-risk bet, not a plan.</p></details>
+      <details class="faq-item"><summary>who's behind this?</summary><p>an anonymous community, same as most first-movers in this category. contract and LP details are public and verifiable on-chain.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <h2>case reopened.</h2>
+  <p>the startup they forgot. the mechanism that survived it. the ticker nobody claimed, until now.</p>
+  <a href="#" class="btn" data-config-link="buy">buy $deaux</a>
+  <div class="foot-links">
+    <a href="#" data-config-link="twitter">twitter</a><a href="#" data-config-link="telegram">telegram</a><a href="#" data-config-link="dexscreener">dexscreener</a>
+  </div>
+</footer>
+
+</body>
+</html>
